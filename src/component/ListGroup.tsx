@@ -60,14 +60,27 @@ const ListGroup = () => {
     setAction("Fetch Data");
   };
 
+  const handleAddDataClick = () => {
+    setAction("Add Data");
+  };
+
   return (
     <>
-      <h2
-        onClick={handleClickThree}
-        className="mt-10 mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-neutral-500"
-      >
-        Appointments
-      </h2>
+      <div className="mt-10 mb-10 ">
+        <h2
+          onClick={handleClickThree}
+          className="text-center text-2xl font-bold leading-9 tracking-tight text-neutral-500"
+        >
+          Appointments
+        </h2>
+
+        <button
+          onClick={handleAddDataClick}
+          className="button bg-blue-100 p-3"
+        >
+          Add Sample Data
+        </button>
+      </div>
 
       <ul role="list">
         {appointments.map((schedule) => (
