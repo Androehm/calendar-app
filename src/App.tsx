@@ -1,13 +1,12 @@
-import SignIn from "./SignIn"
+import { RoutesMap } from "./Routes";
+
 
 function App() {
 
   return (
-  <div>
-    <div className="flex h-screen flex-col items-center justify-between p-24">      
-      <SignIn/>
-    </div>
-  </div>
+  <>        
+    <RoutesMap/>
+  </>
 )
  
    
