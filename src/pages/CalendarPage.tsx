@@ -3,7 +3,7 @@ import ListGroup from "../component/ListGroup";
 export const CalendarPage = () => {
   return (
     <>
-      <div className="flex h-screen flex-col items-center bg-slate-50 dark:bg-neutral-600">
+      <div className="flex h-screen flex-col items-start pl-10">
         <ListGroup />
       </div>
     </>

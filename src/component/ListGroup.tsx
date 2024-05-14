@@ -14,7 +14,6 @@ const ListGroup = () => {
           .get("http://localhost:3000/appointment")
           .then((res) => {
             setAction("Data Fetched");
-            console.log(res);
             setAppointmentState(res.data);
           })
           .catch(() => setAction("Fetch Failed."));
@@ -50,8 +49,7 @@ const ListGroup = () => {
   const handleClickFour = (id: number) => {
     axios
       .delete(`http://localhost:3000/appointment/${id}`)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setAction("Fetch Data");
       })
       .catch(() => setAction("Fetch Failed."));
@@ -66,31 +64,29 @@ const ListGroup = () => {
     <>
       <h2
         onClick={handleClickThree}
-        className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100"
+        className="mt-10 mb-10 text-center text-2xl font-bold leading-9 tracking-tight text-neutral-500"
       >
-        List Group
+        Appointments
       </h2>
 
       <ul role="list">
         {appointments.map((schedule) => (
           <li key={schedule.id} className="py-2">
-            <div className="rounded-lg p-3  shadow-secondary-1  shadow-lg hover:shadow-zinc-950 bg-slate-400 text-black text-surface">
-              <div className="inline-block justify-between">
-
-              <h5 className=" mb-1 text-xl font-medium leading-tight">
-                {schedule.name}
-              </h5>
-              <p className="mb-4 text-base">{schedule.date}</p>
+            <div className="rounded-lg p-5 py-0 pr-1 px-10 shadow-secondary-1  shadow-lg hover:shadow-zinc-950  text-black text-surface flex  border-gray-300 border-2">
+              <div className="flex-col mr-20 my-5">
+                <h5 className="mb-1 text-xl font-medium leading-tight">
+                  {schedule.name}
+                </h5>
+                <p className="mb-4 text-base">{schedule.date}</p>
+                <p className="mb-4 text-base">{schedule.status}</p>
               </div>
-              <p className="mb-4 text-base">{schedule.status}</p>
-
               <button
                 type="button"
                 data-value={schedule.id}
                 onClick={() => {
                   handleClickFour(schedule.id);
                 }}
-                className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                className="inline-block border-r-gray-500 px-6 pr-2 my-0 rounded bg-primary text-xs font-medium uppercase leading-normal text-red-500 shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:bg-gray-300 bg-primary-accent-300 shadow-primary-2 outline-none ring-0 bg-primary-600 shadow-primary-2 shadow-black/30 shadow-dark-strong shadow-dark-strong shadow-dark-strong bg-inherit border-l-1"
               >
                 Delete
               </button>
